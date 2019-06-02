@@ -12,11 +12,12 @@ import { DepartmentUpdateComponent } from '../department-item/departmentUpdate.c
 @Component({
   selector: 'app-departments',
   templateUrl: './departments.component.html',
-  styles: []
+  styleUrls: ['./departments.component.css']
 })
 export class DepartmentsComponent implements OnInit {
 
   departmentItems: Department[];
+  _rowCurrent: Department;
   constructor(private _departmentService: DepartmentService,
     private _apiCommonService: ApiCommonService,
     private dialog: MatDialog) {
@@ -28,9 +29,7 @@ export class DepartmentsComponent implements OnInit {
 
   PaginationDepartment() {
     this._departmentService.PaginationDepartment();
-    console.log("Ra", this._departmentService._departments);
     this.departmentItems = this._departmentService._departments;
-    console.log("Ra2", this._departmentService._departments);
   }
 
   ResetForm(form?: NgForm) {
@@ -45,12 +44,24 @@ export class DepartmentsComponent implements OnInit {
     return dialogConfig;
   }
 
-  AddDepartment() {
+  OpenAddDialog() {
     this.dialog.open(DepartmentAddComponent, this.ConfigureDialog());
   }
 
-  UpdateDepartment() {
+  OpenUpdateDialog() {
     this.dialog.open(DepartmentUpdateComponent, this.ConfigureDialog());
   }
+
+  RowSelected(rowSelected: any) {
+    this._rowCurrent = rowSelected;
+    console.log(this._rowCurrent);
+  }
+
+  DeleteOne() {
+
+  }
+
+
+
 
 }

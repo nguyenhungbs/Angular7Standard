@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import { NgModule, AfterContentInit, AfterViewInit, ElementRef, QueryList, EventEmitter } from '@angular/core';
 import { AppRoutingModule, routingComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { MatTabsModule } from '@angular/material/tabs'
 import { MatDialogModule } from '@angular/material/dialog';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DepartmentService } from './shared/department.service';
@@ -18,6 +19,8 @@ import { PatientUpdateComponent } from './patient-facade/patient-item/patientUpd
 import { PatientAddComponent } from './patient-facade/patient-item/patientAdd.component';
 import { UserAddComponent } from './user-facade/user-item/userAdd.component';
 import { UserUpdateComponent } from './user-facade/user-item/userUpdate.component';
+import { SortableColumnComponent } from './department-facade/departmens/sortable-column/sortable-column.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { UserUpdateComponent } from './user-facade/user-item/userUpdate.componen
     PatientUpdateComponent,
     PatientAddComponent,
     UserAddComponent,
-    UserUpdateComponent
+    UserUpdateComponent,
+    SortableColumnComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +43,7 @@ import { UserUpdateComponent } from './user-facade/user-item/userUpdate.componen
     ReactiveFormsModule,
     HttpClientModule,
     MatDialogModule,
+    MDBBootstrapModule
   ],
 
   entryComponents: [
